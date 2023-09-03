@@ -2,6 +2,8 @@
 
 This game was made for completing `Odin Project` curriculum, you can see the live page [here](https://hallimasa.github.io/rock-paper-scissors-odinProject/)
 
+Wears me out
+
 ## Primary Objectives ( Assignment )
 
 - Your game is going to play against the computer, so begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play.
