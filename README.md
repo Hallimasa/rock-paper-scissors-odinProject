@@ -1,4 +1,6 @@
-# **Rock Paper Scissors Game**(test branch)
+# **Rock Paper Scissors Game**
+
+## TEST BRANCH
 
 This game was made for completing `Odin Project` curriculum, you can see the live page [here](https://hallimasa.github.io/rock-paper-scissors-odinProject/)
 
