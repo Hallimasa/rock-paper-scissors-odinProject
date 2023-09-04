@@ -1,4 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handjet&family=Roboto&display=swap');
+
+* {
+    font-family: 'Handjet', cursive !important;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+    min-width: 360px;
+    display: flex;
+    align-items:start;
+    justify-content: center;
+}
 body {
-    background-color: rgb(45,45,45);
-    color: rgb(230, 230, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgb(25,25,45);
+    color: rgb(255, 255, 255);
+    height: 680px;
+    width: 540px;
+}
+
+.actionButton {
+    display: flex;
+}
+
+#finalResults {
+    margin-top: 36px;
+}
+
+h1 , #finalResults {
+    font-weight: bold;
+    font-size: 4rem;
+    text-align: center;
+}
+
+p , li {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+a:link, a::after {
+    text-decoration: none;
+    color: black;
+}
+
+main div {
+    display: flex;
+    justify-content: space-between;
+}
+
+div > p {
+    text-align: start;
+    margin: 6px 0;
+    padding: 2px 16px;
+}
+
+main p {
+    text-align: center;
+}
+
+button {
+    margin: 0 12px;
+    padding: 6px 12px;
+    font-size: 1.8em;
+}
+
+
+
+header, main section, footer{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+footer {
+    height: 320px;
+}
+
+section > .actionButton, section > .text {
+    position: absolute;
+}
+
+@media (max-width:560px) {
+    p , li {
+        font-size: 1.2em;
+    }
+    #playersId {
+        width: 300px;
+        margin: auto;
+    }
+    h1 {
+        font-size: 3em;
+    }
+    footer {
+        height: 200px;
+    }
+}
+
+.textRed {
+    color: red;
+}
+.textOrange {
+    color: orange;
+}
+.textGreen {
+    color: green;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.win {
+    border: 3px solid green;
+}
+
+.lose {
+    border: 3px solid red;
+}
+
+.tie {
+    border: 3px solid orange;
 }
