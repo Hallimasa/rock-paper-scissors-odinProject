@@ -133,19 +133,28 @@ function game(computerchoice,playerchoice,level) {
     if (iR == 0){
         document.getElementById("round1").innerHTML = `${emojiP[iR]} - Round ${iR+1} - ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round1").classList.add(`${rounds[iR]}`);
-        document.getElementById("mainTextId").innerHTML = "Round 2 choose your move !";
+        document.getElementById("mainTextId").innerHTML = "Round 2 of 5 choose your move !";
     } else if (iR == 1){
         document.getElementById("round2").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round2").classList.add(`${rounds[iR]}`);
-        document.getElementById("mainTextId").innerHTML = "Round 3 choose your move !";
+        document.getElementById("mainTextId").innerHTML = "Round 3 o 5 choose your move !";
     } else if (iR == 2){
         document.getElementById("round3").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round3").classList.add(`${rounds[iR]}`);
-        document.getElementById("mainTextId").innerHTML = "Round 4 choose your move !";
+        document.getElementById("mainTextId").innerHTML = "Round 4 of 5 choose your move !";
+        if ((rounds.filter(filterGameWin).length) >= 3 || (rounds.filter(filterGameLose).length) >= 3){
+            endGame(rounds,results);
+        }
     } else if (iR == 3){
         document.getElementById("round4").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round4").classList.add(`${rounds[iR]}`);
-        document.getElementById("mainTextId").innerHTML = "Round 5 choose your move !";
+        document.getElementById("mainTextId").innerHTML = "Round 5 of 5 choose your move !";
+        if ((rounds.filter(filterGameWin).length) >= 3 || 
+            (rounds.filter(filterGameLose).length) >= 3 ||
+            ((rounds.filter(filterGameTie).length>=2)&&(rounds.filter(filterGameWin).length>=2)||rounds.filter(filterGameLose).length>=2)
+            ){
+            endGame(rounds,results);
+        }
     } else if (iR >= 4){
         document.getElementById("round5").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round5").classList.add(`${rounds[iR]}`);
@@ -182,6 +191,7 @@ function endGame(rounds,results){
 
     document.getElementById("buttonActions").classList.replace("visible","invisible");
     document.getElementById("buttonReplay").classList.replace("invisible","visible");
+    document.getElementById("mainTextId").classList.replace("visible","invisible");
 }
 
 function selectDifficult(difficultyChoice){
@@ -190,7 +200,7 @@ function selectDifficult(difficultyChoice){
     document.getElementById("textActions").classList.replace("invisible","visible");
     document.getElementById("playersId").classList.replace("invisible","visible");
     document.getElementById("footerCriticalInfo").classList.replace("visible","invisible");
-    document.getElementById("mainTextId").innerHTML = "Round 1 choose your move!";
+    document.getElementById("mainTextId").innerHTML = "Round 1 of 5 choose your move!";
 
     if (difficulty !== undefined){
         difficulty.push(difficultyChoice);
@@ -203,6 +213,22 @@ function playButton(){
     document.getElementById("buttonReplay").classList.replace("visible","invisible");
     document.getElementById("mainTextId").classList.replace("invisible","visible");
     document.getElementById("footerCriticalInfo").classList.replace("invisible","visible");
+}
+
+function filterGameWin(value){
+    if (value == "win"){
+        return value
+    }
+}
+function filterGameLose(value){
+    if (value == "lose"){
+        return value
+    }
+}
+function filterGameTie(value){
+    if (value == "lose"){
+        return value
+    }
 }
 
 const rounds = [];
