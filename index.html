@@ -15,9 +15,9 @@
         <section>
             <button id="buttonPlay" class="actionButton visible" onclick="playButton()">PLAY</button>
             <div id="buttonDifficulty" class="actionButton invisible" >
-                <button onclick="selectDifficult(0)"><span class="textGreen">EASY</span></button>
-                <button onclick="selectDifficult(1)"><span class="textOrange">NORMAL</span></button>
-                <button onclick="selectDifficult(2)"><span class="textRed">HARD</span></button>
+                <button onclick="selectDifficult(0)">EASY</button>
+                <button onclick="selectDifficult(1)">NORMAL</button>
+                <button onclick="selectDifficult(2)">HARD</button>
             </div>
             <div id="buttonActions" class="actionButton invisible" >
                 <button id="buttonAction" onclick="game(computerchoice,'Rock',difficulty[0])">&#128074</button>
@@ -30,27 +30,36 @@
             <p>You</p>
             <p>Computer</p>
         </div>
+        <div class="textLog">
+            <section id="footerCriticalInfo" class="invisible">
+                <p><span class="textRed">Critical move</span> only computer has a chance to use 2 moves instead of 1, and choose the best one.</p>
+                <ul>
+                    <li><span class="textGreen">EASY</span> = <span class="textGreen">5%</span> Critical chance on computer moves</li>
+                    <li><span class="textOrange">NORMAL</span> = <span class="textOrange">25%</span> Critical chance on computer moves</li>
+                    <li><span class="textRed">HARD</span> = <span class="textRed">50%</span> Critical chance on computer moves</li>
+                </ul>
+            </section>
+            <section>
+                <div id="textActions" class="invisible">
+                    <p id="round1"></p>
+                    <p id="round2"></p>
+                    <p id="round3"></p>
+                    <p id="round4"></p>
+                    <p id="round5"></p> 
+                    <p id="finalResults"></p>
+                </div>
+                <p id="textResults" class="text invisible"></p>
+            </section>
+        </div>
     </main>
     <footer>
-        <section id="footerCriticalInfo" class="invisible">
-            <p><span class="textRed">Critical move</span> only computer has a chance to use 2 moves instead of 1, and choose the best one.</p>
-            <ul>
-                <li><span class="textGreen">EASY</span> = <span class="textGreen">5%</span> Critical chance on computer moves</li>
-                <li><span class="textOrange">NORMAL</span> = <span class="textOrange">25%</span> Critical chance on computer moves</li>
-                <li><span class="textRed">HARD</span> = <span class="textRed">50%</span> Critical chance on computer moves</li>
-            </ul>
-        </section>
-        <section>
-            <div id="textActions" class="invisible">
-                <p id="round1"></p>
-                <p id="round2"></p>
-                <p id="round3"></p>
-                <p id="round4"></p>
-                <p id="round5"></p> 
-                <p id="finalResults"></p>
-            </div>
-            <p id="textResults" class="text invisible"></p>
-        </section>
+        <div>
+            <a href="https://github.com/Hallimasa/rock-paper-scissors-odinProject">
+                <img src="./attach/github-mark.svg" style="width: 40px;" alt="Hallimasa">
+                <img src="./attach/github-mark-white.svg" id="gitImgHidden" style="width: 40px; position: absolute;" alt="Hallimasa">
+                <p>Hallimasa</p>
+            </a>
+        </div>
     </footer>
     <script src="./script.js"></script>
 </body>

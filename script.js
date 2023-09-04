@@ -142,19 +142,28 @@ function game(computerchoice,playerchoice,level) {
         document.getElementById("round3").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round3").classList.add(`${rounds[iR]}`);
         document.getElementById("mainTextId").innerHTML = "Round 4 of 5 choose your move !";
-        if ((rounds.filter(filterGameWin).length) >= 3 || (rounds.filter(filterGameLose).length) >= 3){
+        if ((rounds.filter(filterGameWin).length) == 3 || (rounds.filter(filterGameLose).length) == 3){
             endGame(rounds,results);
         }
     } else if (iR == 3){
         document.getElementById("round4").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round4").classList.add(`${rounds[iR]}`);
         document.getElementById("mainTextId").innerHTML = "Round 5 of 5 choose your move !";
-        if ((rounds.filter(filterGameWin).length) >= 3 || 
-            (rounds.filter(filterGameLose).length) >= 3 ||
-            ((rounds.filter(filterGameTie).length>=2)&&(rounds.filter(filterGameWin).length>=2)||rounds.filter(filterGameLose).length>=2)
-            ){
+
+        if (rounds.filter(filterGameWin).length == 3 || rounds.filter(filterGameLose).length == 3){
             endGame(rounds,results);
+            console.log("test1");
+            console.log(rounds);
+        } else if (rounds.filter(filterGameTie).length == 2 && rounds.filter(filterGameWin).length == 2){
+            endGame(rounds,results);
+            console.log("test2");
+            console.log(rounds);
+        } else if (rounds.filter(filterGameTie).length == 2 && rounds.filter(filterGameLose).length == 2){
+            endGame(rounds,results);
+            console.log("test3");
+            console.log(rounds);
         }
+        
     } else if (iR >= 4){
         document.getElementById("round5").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round5").classList.add(`${rounds[iR]}`);
@@ -226,9 +235,9 @@ function filterGameLose(value){
     }
 }
 function filterGameTie(value){
-    if (value == "lose"){
+    if (value == "tie"){
         return value
-    }
+    }   
 }
 
 const rounds = [];

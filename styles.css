@@ -1,26 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Handjet&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Handjet&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,400;1,700&display=swap');
 
 * {
-    font-family: 'Handjet', cursive !important;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
 }
 
 html {
     height: 100vh;
     width: 100vw;
     min-width: 360px;
-    display: flex;
-    align-items:start;
-    justify-content: center;
 }
 body {
+    background-color: rgb(23, 26, 33);
+    color: rgb(199, 213, 224);
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    background-color: rgb(25,25,45);
-    color: rgb(255, 255, 255);
-    height: 680px;
-    width: 540px;
+    justify-content: space-between;
 }
 
 .actionButton {
@@ -33,18 +31,18 @@ body {
 
 h1 , #finalResults {
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
 }
 
 p , li {
-    font-size: 1.8em;
+    font-size: 1.4em;
     margin: 0;
 }
 
-a:link, a::after {
+a:link, a:visited {
     text-decoration: none;
-    color: black;
+    color: rgb(199, 213, 224);
 }
 
 main div {
@@ -52,53 +50,82 @@ main div {
     justify-content: space-between;
 }
 
-div > p {
-    text-align: start;
+main div p {
+    text-align:start;
     margin: 6px 0;
     padding: 2px 16px;
 }
 
 main p {
     text-align: center;
+    margin: 12px 0px;
 }
 
 button {
+    border-radius: 12px;
     margin: 0 12px;
     padding: 6px 12px;
-    font-size: 1.8em;
+    font-size: 1.4em;
+    background-color: rgb(42, 71, 94);
+    color: rgb(199, 213, 224);
+
 }
 
+main {
+    flex-grow: 1;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
+header {
+    background-color: rgb(27, 40, 56);
+}
 
-header, main section, footer{
-    height: 100px;
+header, main section, .textLog{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
 }
 
-footer {
+.textLog {
     height: 320px;
 }
 
-section > .actionButton, section > .text {
+#textActions {
+    display: block;
+}
+
+section > .actionButton, section > .text , .textLog > section{
     position: absolute;
+}
+
+#playersId {
+    margin: 46px auto 12px auto;
+    width: 400px;
+}
+
+#footerCriticalInfo {
+    width: 540px;
 }
 
 @media (max-width:560px) {
     p , li {
-        font-size: 1.2em;
+        font-size: 0.8em;
     }
     #playersId {
         width: 300px;
-        margin: auto;
     }
     h1 {
-        font-size: 3em;
+        font-size: 2em;
     }
-    footer {
+    .textLog {
         height: 200px;
+    }
+    #footerCriticalInfo {
+        width: 300px;
     }
 }
 
@@ -121,13 +148,40 @@ section > .actionButton, section > .text {
 }
 
 .win {
-    border: 3px solid green;
+    border: 2px solid green;
+    border-radius: 12px;
 }
 
 .lose {
-    border: 3px solid red;
+    border: 2px solid red;
+    border-radius: 12px;
 }
 
 .tie {
-    border: 3px solid orange;
+    border: 2px solid orange;
+    border-radius: 12px;
+}
+
+
+footer {
+    background-color: rgb(27, 40, 56);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer div a {
+    display: flex;
+    align-items: center;
+}
+
+footer div:hover {
+    #gitImgHidden {
+        visibility: hidden;
+    }
+}
+
+footer div p {
+    margin-left: 12px;
 }
