@@ -16,6 +16,7 @@ body {
     color: rgb(199, 213, 224);
     height: 100%;
     width: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -37,12 +38,29 @@ h1 , #finalResults {
 
 p , li {
     font-size: 1.4em;
+    list-style: none;
     margin: 0;
 }
 
 a:link, a:visited {
     text-decoration: none;
-    color: rgb(199, 213, 224);
+    font-weight: 900;
+    color: rgb(23, 26, 33);
+}
+
+ul {
+    padding: 0;
+    width: inherit;
+}
+
+li {
+    display: flex;
+    font-size: 0.9em;
+    justify-content: space-around
+}
+
+span {
+    font-weight: 900;
 }
 
 main div {
@@ -62,13 +80,16 @@ main p {
 }
 
 button {
+    font-weight: 900;
     border-radius: 12px;
     margin: 0 12px;
     padding: 6px 12px;
     font-size: 1.4em;
-    background-color: rgb(42, 71, 94);
-    color: rgb(199, 213, 224);
+    background-color: rgb(199, 213, 224);
+}
 
+button:hover {
+    transform: scale(1.15);
 }
 
 main {
@@ -113,7 +134,7 @@ section > .actionButton, section > .text , .textLog > section{
 
 @media (max-width:560px) {
     p , li {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     #playersId {
         width: 300px;
@@ -125,7 +146,11 @@ section > .actionButton, section > .text , .textLog > section{
         height: 200px;
     }
     #footerCriticalInfo {
-        width: 300px;
+        width: 360px;
+    }
+    button {
+        font-size: 1em;
+        margin: 0 6px;
     }
 }
 
@@ -137,6 +162,58 @@ section > .actionButton, section > .text , .textLog > section{
 }
 .textGreen {
     color: green;
+}
+
+.textYellow {
+    animation: rainbow 3s infinite;
+}
+
+@-webkit-keyframes rainbow{
+    0%{color: orange;}  
+    10%{color: purple;} 
+    20%{color: red;}
+    30%{color: CadetBlue;}
+    40%{color: yellow;}
+    50%{color: coral;}
+    60%{color: green;}
+    70%{color: cyan;}
+    80%{color: DeepPink;}
+    90%{color: DodgerBlue;}
+    100%{color: orange;}
+}
+
+@-webkit-keyframes rainbowBorder{
+    0%{border: 3px solid orange;}  
+    10%{border: 3px solid purple;} 
+    20%{border: 3px solid  red;}
+    30%{border: 3px solid  CadetBlue;}
+    40%{border: 3px solid  yellow;}
+    50%{border: 3px solid  coral;}
+    60%{border: 3px solid  green;}
+    70%{border: 3px solid  cyan;}
+    80%{border: 3px solid  DeepPink;}
+    90%{border: 3px solid  DodgerBlue;}
+    100%{border: 3px solid orange;}
+}
+
+.easyButton {
+    border: 3px solid green;
+    color: green;
+}
+
+
+.normalButton {
+    border: 3px solid orange;
+    color: orange;
+}
+
+.hardButton {
+    border: 3px solid red;
+    color: red;
+}
+
+.insaneButton {
+    animation: rainbowBorder 3s infinite,rainbow 3s infinite;
 }
 
 .visible {

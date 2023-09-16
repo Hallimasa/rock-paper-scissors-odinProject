@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <header>
@@ -15,9 +16,10 @@
         <section>
             <button id="buttonPlay" class="actionButton visible" onclick="playButton()">PLAY</button>
             <div id="buttonDifficulty" class="actionButton invisible" >
-                <button onclick="selectDifficult(0)">EASY</button>
-                <button onclick="selectDifficult(1)">NORMAL</button>
-                <button onclick="selectDifficult(2)">HARD</button>
+                <button class="easyButton" onclick="selectDifficult(0)">EASY</button>
+                <button class="normalButton" onclick="selectDifficult(1)">NORMAL</button>
+                <button class="hardButton" onclick="selectDifficult(2)">HARD</button>
+                <button class="insaneButton" onclick="selectDifficult(3)">INSANE</button>
             </div>
             <div id="buttonActions" class="actionButton invisible" >
                 <button id="buttonAction" onclick="game(computerchoice,'Rock',difficulty[0])">&#128074</button>
@@ -27,16 +29,21 @@
             <button id="buttonReplay" class="actionButton invisible"><a href="./index.html">REPLAY</a></button>
         </section>
         <div id="playersId" class="invisible">
-            <p>You</p>
-            <p>Computer</p>
+            <p>👤 - You</p>
+            <p>Computer - 🤖</p>
         </div>
         <div class="textLog">
             <section id="footerCriticalInfo" class="invisible">
-                <p><span class="textRed">Critical move</span> only computer has a chance to use 2 moves instead of 1, and choose the best one.</p>
+                <p><span class="textRed">⚡️ CRITICAL MOVE ⚡️</span> = Only computer has a chance to use 2 moves instead of 1 and choose the best one, you cannot win against a critical move, only tie or lose. Good Luck!</p>
                 <ul>
-                    <li><span class="textGreen">EASY</span> = <span class="textGreen">5%</span> Critical chance on computer moves</li>
-                    <li><span class="textOrange">NORMAL</span> = <span class="textOrange">25%</span> Critical chance on computer moves</li>
-                    <li><span class="textRed">HARD</span> = <span class="textRed">50%</span> Critical chance on computer moves</li>
+                    <li><p>EASY</p>
+                    <p>0% Critical Chance for computer moves</p></li>
+                    <li><p>NORMAL</p>
+                    <p>15% Critical Chance for computer moves</p></li>
+                    <li><p>HARD</p>
+                    <p>30% Critical Chance for computer moves</p></li>
+                    <li><p>INSANE</p>
+                    <p>75% Critical Chance for computer moves</p></li>
                 </ul>
             </section>
             <section>
@@ -55,11 +62,32 @@
     <footer>
         <div>
             <a href="https://github.com/Hallimasa/rock-paper-scissors-odinProject">
-                <img src="./attach/github-mark.svg" style="width: 40px;" alt="Hallimasa">
-                <img src="./attach/github-mark-white.svg" id="gitImgHidden" style="width: 40px; position: absolute;" alt="Hallimasa">
+                <img src="./attach/img/github-mark.svg" style="width: 40px;" alt="Hallimasa">
+                <img src="./attach/img/github-mark-white.svg" id="gitImgHidden" style="width: 40px; position: absolute;" alt="Hallimasa">
                 <p>Hallimasa</p>
             </a>
         </div>
+        <audio id="audioClick">
+            <source src="./attach/sounds/click.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audioWonMatch">
+            <source src="./attach/sounds/won_match.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audioWonGame">
+            <source src="./attach/sounds/won_game.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audioLostMatch">
+            <source src="./attach/sounds/lost_match.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audioLostGame">
+            <source src="./attach/sounds/lost_game.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audioTieMatch">
+            <source src="./attach/sounds/tie_match.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audioTieGame">
+            <source src="./attach/sounds/tie_game.mp3" type="audio/mpeg">
+        </audio>
     </footer>
     <script src="./script.js"></script>
 </body>

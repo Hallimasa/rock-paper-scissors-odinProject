@@ -14,76 +14,103 @@ function playRound(computerchoice,playerchoice,computerCriticalChoice,computerCr
     if (computerCrit==false){
         if (computerchoice === "Paper") {
             if (playerchoice.match(/rock/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/paper/i)) {
+                soundTieMatch.play();
                 return "tie";
             } else if (playerchoice.match(/scissors/i)) {
+                soundWonMatch.play();
                 return "win";
             }
         } else if (computerchoice === "Rock") {
             if (playerchoice.match(/rock/i)) {
+                soundTieMatch.play();
                 return "tie";
             } else if (playerchoice.match(/paper/i)) {
+                soundWonMatch.play();
                 return "win";
             } else if (playerchoice.match(/scissors/i)) {
+                soundLostMatch.play();
                 return "lose";
             }
         } else if (computerchoice === "Scissors") {
             if (playerchoice.match(/rock/i)) {
+                soundWonMatch.play();
                 return "win";
             } else if (playerchoice.match(/paper/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/scissors/i)) {
+                soundTieMatch.play();
                 return "tie";
             }
         }
     } else if (computerCrit==true) {
         if (computerchoice === "Paper" && computerCriticalChoice == "Rock") {
             if (playerchoice.match(/rock/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/paper/i)) {
+                soundTieMatch.play();
                 return "tie";
             } else if (playerchoice.match(/scissors/i)) {
+                soundLostMatch.play();
                 return "lose";
             }
         } else if (computerchoice === "Paper" && computerCriticalChoice == "Scissors") {
             if (playerchoice.match(/rock/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/paper/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/scissors/i)) {
+                soundTieMatch.play();
                 return "tie";
             }
         } else if (computerchoice === "Rock" && computerCriticalChoice == "Paper") {
             if (playerchoice.match(/rock/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/paper/i)) {
+                soundTieMatch.play();
                 return "tie";
             } else if (playerchoice.match(/scissors/i)) {
+                soundLostMatch.play();
                 return "lose";
             }
         } else if (computerchoice === "Rock" && computerCriticalChoice == "Scissors") {
             if (playerchoice.match(/rock/i)) {
+                soundTieMatch.play();
                 return "tie";
             } else if (playerchoice.match(/paper/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/scissors/i)) {
+                soundLostMatch.play();
                 return "lose";
             }
         } else if (computerchoice === "Scissors" && computerCriticalChoice == "Rock") {
             if (playerchoice.match(/rock/i)) {
+                soundTieMatch.play();
                 return "tie";
             } else if (playerchoice.match(/paper/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/scissors/i)) {
+                soundLostMatch.play();
                 return "lose";
             }
         } else if (computerchoice === "Scissors" && computerCriticalChoice == "Paper") {
             if (playerchoice.match(/rock/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/paper/i)) {
+                soundLostMatch.play();
                 return "lose";
             } else if (playerchoice.match(/scissors/i)) {
+                soundTieMatch.play();
                 return "tie";
             }
         }   
@@ -94,13 +121,15 @@ function game(computerchoice,playerchoice,level) {
 
     let computerCrit = "";
 
-    if (level == 2){
-        computerCrit = (Math.random() <= 0.50 ? true : false);
+    if (level == 3){
+        computerCrit = (Math.random() <= 0.75 ? true : false);
+    } else if (level == 2){
+        computerCrit = (Math.random() <= 0.30 ? true : false);
     } else if (level == 1){
-        computerCrit = (Math.random() <= 0.25 ? true : false);
+        computerCrit = (Math.random() <= 0.15 ? true : false);
     } else if (level == 0){
-        computerCrit = (Math.random() <= 0.05 ? true : false);
-    } 
+        computerCrit = false;
+    };
 
     computerchoice = getComputerChoice();
 
@@ -109,24 +138,23 @@ function game(computerchoice,playerchoice,level) {
     while (computerCriticalChoice === computerchoice){
         computerCriticalChoice = getComputerChoice()
     };
-
-
+    
     rounds.push(playRound(computerchoice,playerchoice,computerCriticalChoice,computerCrit));
 
     let iR = (rounds.length -1 );
 
-    emojiP.push(playerchoice === 'Rock' ? '&#128074' : playerchoice === 'Paper' ? '&#128400': playerchoice === 'Scissors' ? '&#9996':'');
+    emojiP.push(playerchoice === 'Rock' ? '&#128100 &#128074' : playerchoice === 'Paper' ? '&#128100 &#128400': playerchoice === 'Scissors' ? '&#128100 &#9996':'');
     
     if (computerCrit){
-        emojiC.push((computerchoice === 'Rock' && computerCriticalChoice == 'Paper') ? '&#128074 + &#128400 <span class="textRed">critical move !</span>' :
-                    (computerchoice === 'Rock' && computerCriticalChoice == 'Scissors') ? '&#128074 + &#9996 <span class="textRed">critical move !</span>' :
-                    (computerchoice === 'Paper' && computerCriticalChoice == 'Rock') ? '&#128400 + &#128074 <span class="textRed">critical move !</span>' : 
-                    (computerchoice === 'Paper' && computerCriticalChoice == 'Scissors') ? '&#128400 + &#9996 <span class="textRed">critical move !</span>' :
-                    (computerchoice === 'Scissors' && computerCriticalChoice == 'Rock') ? '&#9996 + &#128074 <span class="textRed">critical move !</span>' :
-                    (computerchoice === 'Scissors' && computerCriticalChoice == 'Paper') ? '&#9996 + &#128400 <span class="textRed">critical move !</span>' :
+        emojiC.push((computerchoice === 'Rock' && computerCriticalChoice == 'Paper') ? '&#128074 &#129302 &#128400 <span class="textRed"></span>' :
+                    (computerchoice === 'Rock' && computerCriticalChoice == 'Scissors') ? '&#128074 &#129302 &#9996 <span class="textRed"></span>' :
+                    (computerchoice === 'Paper' && computerCriticalChoice == 'Rock') ? '&#128400 &#129302 &#128074 <span class="textRed"></span>' : 
+                    (computerchoice === 'Paper' && computerCriticalChoice == 'Scissors') ? '&#128400 &#129302 &#9996 <span class="textRed"></span>' :
+                    (computerchoice === 'Scissors' && computerCriticalChoice == 'Rock') ? '&#9996 &#129302 &#128074 <span class="textRed"></span>' :
+                    (computerchoice === 'Scissors' && computerCriticalChoice == 'Paper') ? '&#9996 &#129302 &#128400 <span class="textRed"></span>' :
         computerchoice === 'Paper' ? '&#128400': computerchoice === 'Scissors' ? '&#9996':'');
     } else {
-        emojiC.push(computerchoice === 'Rock' ? '&#128074' : computerchoice === 'Paper' ? '&#128400': computerchoice === 'Scissors' ? '&#9996':'');
+        emojiC.push(computerchoice === 'Rock' ? '&#128074 &#129302' : computerchoice === 'Paper' ? '&#128400 &#129302': computerchoice === 'Scissors' ? '&#9996 &#129302':'');
     };
 
     document.getElementById("textActions").classList.replace("invisible","visible");
@@ -143,6 +171,9 @@ function game(computerchoice,playerchoice,level) {
         document.getElementById("round3").classList.add(`${rounds[iR]}`);
         document.getElementById("mainTextId").innerHTML = "Round 4 of 5 choose your move !";
         if ((rounds.filter(filterGameWin).length) == 3 || (rounds.filter(filterGameLose).length) == 3){
+            soundTieMatch.pause();
+            soundWonMatch.pause();
+            soundLostMatch.pause();
             endGame(rounds,results);
         }
     } else if (iR == 3){
@@ -151,23 +182,29 @@ function game(computerchoice,playerchoice,level) {
         document.getElementById("mainTextId").innerHTML = "Round 5 of 5 choose your move !";
 
         if (rounds.filter(filterGameWin).length == 3 || rounds.filter(filterGameLose).length == 3){
+            soundTieMatch.pause();
+            soundWonMatch.pause();
+            soundLostMatch.pause();
             endGame(rounds,results);
-            console.log("test1");
-            console.log(rounds);
         } else if (rounds.filter(filterGameTie).length == 2 && rounds.filter(filterGameWin).length == 2){
+            soundTieMatch.pause();
+            soundWonMatch.pause();
+            soundLostMatch.pause();
             endGame(rounds,results);
-            console.log("test2");
-            console.log(rounds);
         } else if (rounds.filter(filterGameTie).length == 2 && rounds.filter(filterGameLose).length == 2){
+            soundTieMatch.pause();
+            soundWonMatch.pause();
+            soundLostMatch.pause();
             endGame(rounds,results);
-            console.log("test3");
-            console.log(rounds);
         }
         
     } else if (iR >= 4){
         document.getElementById("round5").innerHTML = `${emojiP[iR]} - Round ${iR+1} -  ${rounds[iR]} - ${emojiC[iR]}`;
         document.getElementById("round5").classList.add(`${rounds[iR]}`);
         document.getElementById("mainTextId").classList.replace("visible","invisible");
+        soundTieMatch.pause();
+        soundWonMatch.pause();
+        soundLostMatch.pause();
         endGame(rounds,results);
     };
 
@@ -192,10 +229,16 @@ function endGame(rounds,results){
 
     if ( (results["lose"] >= 3 ) || (results["lose"] > results["win"])  ) {
         document.getElementById("finalResults").innerHTML = 'L O S E';
+        soundLostGame.play();
+
     } else if ( (results["win"] >= 3 ) || (results["win"] > results["lose"])  ) {
         document.getElementById("finalResults").innerHTML = 'W I N';
+        soundWonGame.play();
+
     } else {
         document.getElementById("finalResults").innerHTML = 'T I E';
+        soundTieGame.play();
+
     };
 
     document.getElementById("buttonActions").classList.replace("visible","invisible");
@@ -209,6 +252,7 @@ function selectDifficult(difficultyChoice){
     document.getElementById("textActions").classList.replace("invisible","visible");
     document.getElementById("playersId").classList.replace("invisible","visible");
     document.getElementById("footerCriticalInfo").classList.replace("visible","invisible");
+    soundClick.play();
     document.getElementById("mainTextId").innerHTML = "Round 1 of 5 choose your move!";
 
     if (difficulty !== undefined){
@@ -222,6 +266,7 @@ function playButton(){
     document.getElementById("buttonReplay").classList.replace("visible","invisible");
     document.getElementById("mainTextId").classList.replace("invisible","visible");
     document.getElementById("footerCriticalInfo").classList.replace("invisible","visible");
+    soundClick.play();
 }
 
 function filterGameWin(value){
@@ -245,6 +290,15 @@ const results = [];
 const difficulty = [];
 const emojiC = [];
 const emojiP = [];
+
+const soundClick = document.getElementById('audioClick');
+const soundTieMatch = document.getElementById('audioTieMatch');
+const soundTieGame = document.getElementById('audioTieGame');
+const soundWonMatch = document.getElementById('audioWonMatch');
+const soundWonGame = document.getElementById('audioWonGame');
+const soundLostMatch = document.getElementById('audioLostMatch');
+const soundLostGame = document.getElementById('audioLostGame');
+
 
 
 let computerchoice = "";
